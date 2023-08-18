@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useRouter } from 'next/router';
 
 function Copyright(props) {
   return (
@@ -36,14 +37,40 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const router = useRouter();
+  const [isLoading, setIsLoading] = React.useState(false)
+
+  React.useEffect(() => {
+    var token = localStorage.getItem("token");
+    if (token !== null) {
+      console.log(token)
+      router.push('/dashboard');
+    }
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true)
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      email: trim(formData.get('email')),
+      password: trim(formData.get('password')),
+    }
+    apiPost('/donor-login', data)
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        alert("Authorized", "success");
+        setIsLoading(false)
+        router.push('/dashboard');
+      })
+      .catch((err) => {
+        localStorage.clear();
+        console.log(err);
+        alert(err, "error");
+        setIsLoading(false)
+      });
   };
+
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -69,38 +96,38 @@ export default function SignIn() {
             noValidate
             sx={{ mt: 1 }}
           >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Sign In
-            </Button>
+            <form onSubmit={handleSubmit}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                disabled={isLoading}
+              >
+                Sign In
+              </Button>
+            </form>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

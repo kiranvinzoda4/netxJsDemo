@@ -9,7 +9,7 @@ export default function MainPage() {
   //   // Set a value in localStorage
   //   localStorage.setItem("token", "myValue");
   // }, []);
-
+  return <Login />;
   useEffect(() => {
     setToken(localStorage.getItem("token"));
   }, []);

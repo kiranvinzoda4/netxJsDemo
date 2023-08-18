@@ -1,0 +1,414 @@
+body {
+    margin: unset;
+}
+
+a {
+    color: #0B5386;
+    text-decoration: none !important;
+}
+
+.MuiDrawer-docked .MuiDrawer-paper::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.side-nav .MuiButtonBase-root {
+    color: #757575;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+#user-view {
+    min-height: 100vh;
+    background: url(../images/bg-auth.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#user-view .card {
+    margin-top: 100px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 1px 1px 20px 5px #00000029;
+}
+
+#user-view .card .input {
+    padding: 50px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#operations {
+    margin-top: 10px;
+}
+
+.operation {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    border-radius: 10px;
+    background-color: #1173ba19;
+    border: 1px solid #1173ba;
+}
+
+.operation h3 {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.my-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
+
+h2.title {
+    margin-top: unset;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.title.type-2 {
+    margin-top: 7px;
+}
+
+.product-card {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) !important;
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25) !important;
+}
+
+.unauthorized {
+    text-align: center;
+}
+
+.unauthorized img {
+    width: 40%;
+}
+
+.drag-row {
+    border: 1px solid rgb(128 128 128 / 15%);
+}
+
+.border-draggable {
+    padding: 10px;
+}
+
+.border-draggable .MuiButtonBase-root {
+    padding: unset;
+    margin-left: 10px;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+#menu-appbar .MuiMenuItem-root {
+    color: #757575 !important;
+}
+
+table.data,
+table.campaign {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table.data th {
+    text-align: left;
+    width: 20%;
+}
+
+table.data td {
+    width: 30%;
+}
+
+table.data tr,
+table.data th,
+table.data td,
+table.campaign tr,
+table.campaign th,
+table.campaign td {
+    padding: 10px;
+    border: 1px solid rgb(128 128 128 / 15%);
+}
+
+.mt-5 {
+    margin-top: 3rem !important;
+}
+
+.mt-4 {
+    margin-top: 1.5rem !important;
+}
+
+.mt-3 {
+    margin-top: 1rem !important;
+}
+
+.ml-5 {
+    margin-left: 3rem !important;
+}
+
+.ml-4 {
+    margin-left: 1.5rem !important;
+}
+
+.ml-3 {
+    margin-left: 1rem !important;
+}
+
+table.campaign th {
+    text-align: left;
+}
+
+.frog-image {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+
+.quick-links {
+    text-align: center;
+}
+
+.quick-links:hover {
+    background-color: #E2EEF7;
+}
+
+.quick-links .icon svg {
+    font-size: 54px;
+    color: #0B5386;
+}
+
+.pb-unset {
+    padding-bottom: unset !important;
+}
+
+.reports .MuiPaper-root {
+    box-shadow: unset;
+}
+
+.progress {
+    margin-top: 30px;
+    text-align: center;
+}
+
+form.type-form {
+    margin-top: -30px;
+    text-align: left;
+}
+
+.camp-error svg {
+    color: #e0221b;
+    font-size: 100px;
+}
+
+.camp-download svg {
+    color: #2fdb23;
+    font-size: 100px;
+}
+
+.number input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.number input[type=number] {
+    -moz-appearance: textfield;
+    /* Firefox */
+}
+
+.counts {
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.counts .icon {
+    text-align: right;
+}
+
+.counts .icon svg {
+    margin-top: 5px;
+    font-size: 80px;
+    color: #fff;
+}
+
+.counts h2,
+.counts h3 {
+    color: #fff;
+    margin-top: unset;
+    margin-bottom: 5px;
+}
+
+.counts h2 {
+    font-size: 34px;
+    font-weight: 500;
+}
+
+.counts h3 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.counts.type-1 {
+    background-color: #2F1DCE;
+    background-image: linear-gradient(110deg, #2F1DCE 50%, #120975);
+}
+
+.counts.type-2 {
+    background-color: #3194F5;
+    background-image: linear-gradient(110deg, #3194F5 50%, #1765aa);
+}
+
+.counts.type-3 {
+    background-color: #F8AB12;
+    background-image: linear-gradient(110deg, #F8AB12 50%, #d8880d);
+}
+
+.counts.type-4 {
+    background-color: #E24D4D;
+    background-image: linear-gradient(110deg, #E24D4D 50%, #cd1b1b);
+}
+
+.counts.type-5 {
+    background-color: #1dce55;
+    background-image: linear-gradient(110deg, #1dce55 50%, #069b35);
+}
+
+.counts.type-6 {
+    background-color: #880cb0;
+    background-image: linear-gradient(110deg, #880cb0 50%, #51046a);
+}
+
+.chart {
+    margin-top: 158px;
+    margin-bottom: 158px;
+}
+
+.checkCoupon h3 {
+    font-weight: 500;
+    margin-bottom: unset;
+}
+
+.checkCoupon p {
+    margin-top: 7px;
+}
+
+.checkCoupon .MuiDivider-root {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.checkCoupon .gift {
+    color: #e0221b;
+    font-size: 100px;
+}
+
+.checkCoupon .invalid {
+    color: #e0221b;
+    font-size: 100px;
+}
+
+.checkCoupon .redeemed {
+    color: #1ed027;
+    font-size: 100px;
+}
+
+.checkCoupon .used {
+    color: #4947d0;
+    font-size: 100px;
+}
+
+.checkCoupon .link {
+    color: #4947d0;
+    font-size: 12px;
+}
+
+p.link {
+    color: #1173BA;
+    font-size: 14px;
+    margin: unset;
+}
+
+.checkCoupon .link:hover,
+p.link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    /* padding-bottom: 6rem; */
+    min-height: 100%;
+}
+
+.main-container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #4A8EBA;
+    background-image: url("../images/bg-main.svg");
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.admin-copyright {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+}
+
+.admin-copyright p,
+.admin-copyright a {
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.admin-copyright a {
+    font-weight: bold;
+    color: #F26522;
+}
+
+.leaflet-bottom.leaflet-right {
+    display: none;
+}
+
+.import-input {
+    display: none;
+}
+
+.sample {
+    margin-top: unset;
+}
+
+.warning-error {
+    width: 100%;
+    border-collapse: collapse;
+
+}
+
+.warning-error,
+.warning-error tr,
+.warning-error th,
+.warning-error td {
+    padding: 5px;
+    text-align: left;
+    padding-left: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.295);
+}

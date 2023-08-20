@@ -4,7 +4,9 @@ import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
 import Checkbox from "@mui/material/Checkbox";
+import FormLabel from "@mui/material/FormLabel";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -14,6 +16,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useRouter } from "next/router";
 import { apiPost } from "../../functionsAPI";
+import RadioGroup from "@mui/material/RadioGroup";
+import Radio from "@mui/material/Radio";
 
 function Copyright(props) {
   return (
@@ -42,12 +46,16 @@ export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
+  const [user, setUser] = useState(false);
 
   React.useEffect(() => {
-    var token = localStorage.getItem("token");
-
-    if (token !== null) {
-      router.push("/dashboard");
+    var adminToken = localStorage.getItem("adminToken");
+    var candidateToken = localStorage.getItem("candidateToken");
+    if (adminToken !== null) {
+      router.push("/adminProfile");
+    }
+    if (candidateToken !== null) {
+      router.push("/candidateProfile");
     }
   });
 
@@ -58,12 +66,26 @@ export default function SignIn() {
       email: email,
       password: password,
     };
-    apiPost("/donor-login", data)
+
+    var url = null;
+    var token = null;
+    if (user) {
+      url = "/login";
+    } else {
+      url = "/candidate-login";
+    }
+
+    apiPost(url, data)
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
         alert("Authorized", "success");
         setIsLoading(false);
-        router.push("/dashboard");
+        if (user) {
+          localStorage.setItem("adminToken", res.data.token);
+          router.push("/adminProfile");
+        } else {
+          localStorage.setItem("adminToken", res.data.token);
+          router.push("/candidateProfile");
+        }
       })
       .catch((err) => {
         localStorage.clear();
@@ -119,7 +141,29 @@ export default function SignIn() {
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
             />
-
+            <FormControl>
+              <FormLabel id="demo-radio-buttons-group-label">
+                Sign in as{" "}
+              </FormLabel>
+              <RadioGroup
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="candidate"
+                name="radio-buttons-group"
+              >
+                <FormControlLabel
+                  value="candidate"
+                  control={<Radio />}
+                  label="Candidate"
+                  onClick={() => setUser(false)}
+                />
+                <FormControlLabel
+                  value="admin"
+                  control={<Radio />}
+                  label="Admin"
+                  onClick={() => setUser(true)}
+                />
+              </RadioGroup>
+            </FormControl>
             <Button
               type="submit"
               fullWidth

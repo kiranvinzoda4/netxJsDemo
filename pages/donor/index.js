@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import Deposits from "./Deposits";
-import Orders from "./Orders";
 import MainLayout from "../../layouts/main";
 import Title from "../Title";
 import { apiDelete, apiGet, apiPost, apiPut } from "../../functionsAPI";
+import { AppBar, Breadcrumbs, Button, ButtonGroup, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, Grid, IconButton, Slide, Toolbar, Typography } from "@mui/material";
+import Table from '../../components/Table'
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
-
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Customers() {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -44,7 +44,7 @@ export default function Customers() {
       label: "Email",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -52,7 +52,7 @@ export default function Customers() {
       label: "Address",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -60,7 +60,7 @@ export default function Customers() {
       label: "Mobile",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -68,7 +68,7 @@ export default function Customers() {
       label: "Address",
       options: {
         filter: true,
-        sort: false,
+        sort: true,
       },
     },
     {
@@ -178,39 +178,23 @@ export default function Customers() {
 
   return (
     <MainLayout>
-      <Title>Customers</Title>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={8} lg={9}>
-          <Paper
-            sx={{
-              p: 2,
-              display: "flex",
-              flexDirection: "column",
-              height: 240,
-            }}
-          >
-            <Deposits />
-          </Paper>
-        </Grid>
-        <Grid item xs={12} md={4} lg={3}>
-          <Paper
-            sx={{
-              p: 2,
-              display: "flex",
-              flexDirection: "column",
-              height: 240,
-            }}
-          >
-            <Deposits />
-          </Paper>
-        </Grid>
-        {/* Recent Orders */}
-        <Grid item xs={12}>
-          <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
-            <Orders />
-          </Paper>
-        </Grid>
+      <Title>Doner</Title>
+
+      {/* Recent Orders */}
+      <Grid item xs={12}>
+
+        <Table
+          title={`Doner List`}
+          serverSide={true}
+          count={count}
+          columns={columns}
+          data={tableData}
+          onTableChange={handleTableChange}
+          rowsPerPage={limit}
+        />
+
       </Grid>
+
     </MainLayout>
   );
 }

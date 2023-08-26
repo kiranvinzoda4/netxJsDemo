@@ -2,7 +2,7 @@ import axios from 'axios'
 import { URL } from './config'
 
 function getHeaders(type = 'AdminToken') {
-    const token = (type === 'AdminToken') ? localStorage.getItem('smsToken') : localStorage.getItem('smsCustomerToken') ? localStorage.getItem('smsCustomerToken') : null
+    const token = (type === 'AdminToken') ? localStorage.getItem('adminToken') : localStorage.getItem('smsCustomerToken') ? localStorage.getItem('smsCustomerToken') : null
     const headers = {
         // 'accept': 'application/json',
         'Content-Type': 'application/json',

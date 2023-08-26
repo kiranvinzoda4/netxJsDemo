@@ -64,14 +64,6 @@ export default function Customers() {
       },
     },
     {
-      name: "address",
-      label: "Address",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-    {
       name: "action",
       label: "Action",
       options: {
@@ -141,7 +133,6 @@ export default function Customers() {
 
     apiGet("/get-all-candidate", filters)
       .then((res) => {
-        console.log(res)
         res.data.list.map(
           (item) =>
           (item.action = (

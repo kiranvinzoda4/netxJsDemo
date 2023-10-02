@@ -166,6 +166,18 @@ export default function Customers() {
   }, []);
 
 
+  const handleDelete = (id) => {
+    apiDelete("/delete-candidate-by-id/" + id)
+      .then((res) => {
+        alert("done");
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err, 'error');
+        setIsLoading(false);
+      });
+  }
 
   return (
     <MainLayout>

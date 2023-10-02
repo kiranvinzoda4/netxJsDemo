@@ -9,7 +9,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function Customers() {
+export default function Donation() {
   const [isLoading, setIsLoading] = React.useState(false);
 
   // Table
@@ -64,14 +64,6 @@ export default function Customers() {
       },
     },
     {
-      name: "address",
-      label: "Address",
-      options: {
-        filter: true,
-        sort: true,
-      },
-    },
-    {
       name: "action",
       label: "Action",
       options: {
@@ -84,22 +76,22 @@ export default function Customers() {
 
   const changePage = (page) => {
     const start = limit * page;
-    getDonor(start, limit, sortBy, order, searchItem);
+    getCandidate(start, limit, sortBy, order, searchItem);
     setStart(start);
   };
   const sort = (sortOrder) => {
     const sortBy = sortOrder.name;
     const order = sortOrder.direction;
-    getDonor(start, limit, sortBy, order, searchItem);
+    getCandidate(start, limit, sortBy, order, searchItem);
     setSortBy(sortBy);
     setOrder(order);
   };
   const changeRowsPerPage = (limit) => {
-    getDonor(start, limit, sortBy, order, searchItem);
+    getCandidate(start, limit, sortBy, order, searchItem);
     setLimit(limit);
   };
   const onSearch = (searchItem) => {
-    getDonor(start, limit, sortBy, order, searchItem);
+    getCandidate(start, limit, sortBy, order, searchItem);
     setSearch(searchItem);
   };
   const handleTableChange = (action, tableState) => {
@@ -123,7 +115,7 @@ export default function Customers() {
   };
   // END: Table functions
 
-  const getDonor = (
+  const getCandidate = (
     start = 0,
     limit = 10,
     sortBy = null,
@@ -139,9 +131,8 @@ export default function Customers() {
       search,
     };
 
-    apiGet("/get-all-donors", filters)
+    apiGet("/get-all-candidate", filters)
       .then((res) => {
-        console.log(res)
         res.data.list.map(
           (item) =>
           (item.action = (
@@ -170,21 +161,32 @@ export default function Customers() {
   };
 
   React.useEffect(() => {
-    getDonor();
+    getCandidate();
     // eslint-disable-next-line
   }, []);
 
 
+  const handleDelete = (id) => {
+    apiDelete("/delete-candidate-by-id/" + id)
+      .then((res) => {
+        alert("done");
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err, 'error');
+        setIsLoading(false);
+      });
+  }
 
   return (
     <MainLayout>
-      <Title>Doner</Title>
+      <Title>Candidate</Title>
 
       {/* Recent Orders */}
       <Grid item xs={12}>
-
         <Table
-          title={`Doner List`}
+          title={`Candidate List`}
           serverSide={true}
           count={count}
           columns={columns}
@@ -192,9 +194,7 @@ export default function Customers() {
           onTableChange={handleTableChange}
           rowsPerPage={limit}
         />
-
       </Grid>
-
     </MainLayout>
   );
 }

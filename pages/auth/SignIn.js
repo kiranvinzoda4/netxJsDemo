@@ -44,7 +44,8 @@ export default function SignIn() {
   const [password, setPassword] = useState(false);
 
   React.useEffect(() => {
-    var token = localStorage.getItem("token");
+    // localStorage.removeItem('token');
+    var token = localStorage.getItem('token');
 
     if (token !== null) {
       router.push("/dashboard");
@@ -58,8 +59,9 @@ export default function SignIn() {
       email: email,
       password: password,
     };
-    apiPost("/donor-login", data)
+    apiPost("/login", data)
       .then((res) => {
+       
         localStorage.setItem("token", res.data.token);
         alert("Authorized", "success");
         setIsLoading(false);

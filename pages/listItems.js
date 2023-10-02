@@ -32,5 +32,21 @@ export const mainListItems = (
         <ListItemText primary="Candidate" />
       </ListItemButton>
     </Link>
+    <Link href="/donation">
+      <ListItemButton>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Donation" />
+      </ListItemButton>
+    </Link>
+    <Link href="/master">
+      <ListItemButton>
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        <ListItemText primary="Masters" />
+      </ListItemButton>
+    </Link>
   </React.Fragment>
 );

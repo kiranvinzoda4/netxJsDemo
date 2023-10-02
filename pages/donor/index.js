@@ -165,7 +165,18 @@ export default function Customers() {
     // eslint-disable-next-line
   }, []);
 
-
+  const handleDelete = (id) => {
+    apiDelete("/delete-donor-by-id/" + id)
+      .then((res) => {
+        alert("done");
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err, 'error');
+        setIsLoading(false);
+      });
+  }
 
   return (
     <MainLayout>

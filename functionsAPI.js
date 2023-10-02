@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { URL } from './config'
 
-function getHeaders(type = 'AdminToken') {
-    const token = (type === 'AdminToken') ? localStorage.getItem('adminToken') : localStorage.getItem('smsCustomerToken') ? localStorage.getItem('smsCustomerToken') : null
+function getHeaders() {
+    const token = localStorage.getItem('token')
     const headers = {
         // 'accept': 'application/json',
         'Content-Type': 'application/json',
@@ -11,10 +11,10 @@ function getHeaders(type = 'AdminToken') {
     return headers
 }
 
-export const apiGet = (apiURL = '/URL_HERE', params = {}, tokenType = 'AdminToken') => {
+export const apiGet = (apiURL = '/URL_HERE', params = {}) => {
     const url = URL + apiURL
     const headerConfig = {
-        headers: getHeaders(tokenType),
+        headers: getHeaders(),
         params
     }
     return new Promise(async (resolve, reject) => {
@@ -35,9 +35,9 @@ export const apiGet = (apiURL = '/URL_HERE', params = {}, tokenType = 'AdminToke
     });
 };
 
-export const apiPost = (apiURL = '/URL_HERE', data = {}, params = {}, tokenType = 'AdminToken') => {
+export const apiPost = (apiURL = '/URL_HERE', data = {}, params = {}) => {
     const url = URL + apiURL
-    const headerConfig = { headers: getHeaders(tokenType), params }
+    const headerConfig = { headers: getHeaders(), params }
     return new Promise(async (resolve, reject) => {
         await axios.post(url, data, headerConfig)
             .then((data) => resolve(data))
@@ -56,9 +56,9 @@ export const apiPost = (apiURL = '/URL_HERE', data = {}, params = {}, tokenType 
     });
 };
 
-export const apiPut = (apiURL = '/URL_HERE', data = {}, params = {}, tokenType = 'AdminToken') => {
+export const apiPut = (apiURL = '/URL_HERE', data = {}, params = {}) => {
     const url = URL + apiURL
-    const headerConfig = { headers: getHeaders(tokenType), params }
+    const headerConfig = { headers: getHeaders(), params }
     return new Promise(async (resolve, reject) => {
         await axios.put(url, data, headerConfig)
             .then((data) => resolve(data))
